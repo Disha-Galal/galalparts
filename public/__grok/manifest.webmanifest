@@ -1,0 +1,14 @@
+{
+  "id": "/",
+  "name": "جلال لصيانة وبيع قطع غيار الأجهزة المنزلية",
+  "short_name": "جلال",
+  "description": "صيانة وقطع غيار الأجهزة المنزلية بعد مطابقة الموديل",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0e1114",
+  "theme_color": "#0e1114",
+  "icons": [{ "src": "/__grok/icon-180.png", "sizes": "180x180", "type": "image/png" }]
+}

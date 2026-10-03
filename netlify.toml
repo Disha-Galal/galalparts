@@ -1,3 +1,3 @@
 [build]
-  command = "vite build"
+  command = "npm run validate:content && vite build"
   publish = "dist/client"

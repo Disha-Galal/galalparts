@@ -12,3 +12,8 @@ attachments/
 *.log
 .DS_Store
 .node_modules.lock
+
+# Local Netlify folder
+.netlify
+
+.tanstack/
