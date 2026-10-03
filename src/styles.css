@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --color-bg: #0e1114;
+  --color-bg-elevated: #14181d;
+  --color-surface: #1b2128;
+  --color-fg: #f4f7f8;
+  --color-muted: #b4bec7;
+  --color-cyan: #2cc8f0;
+  --color-ink: #04161c;
+  --color-line: #2a333c;
+  --color-line-strong: #3c4854;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--color-cyan);
+    color: var(--color-ink);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+@layer components {
+  .metal {
+    background-color: var(--color-bg);
+    background-image:
+      linear-gradient(#ffffff0b, #0000 34%),
+      repeating-linear-gradient(90deg, #ffffff05 0 1px, #0000 1px 4px);
+  }
+  .wrap {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  .section {
+    padding-block: 3.25rem;
+  }
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    padding: 1.15rem;
+  }
+  .card-link {
+    height: 100%;
+    color: inherit;
+    flex-direction: column;
+    gap: 0.45rem;
+    text-decoration: none;
+    transition: border-color 0.16s;
+    display: flex;
+  }
+  .card-link:hover {
+    border-color: var(--color-cyan);
+  }
+  .cyan-rule {
+    background: var(--color-cyan);
+    width: 4.5rem;
+    height: 2px;
+    box-shadow: 0 0 14px var(--color-cyan);
+    margin-inline: auto;
+    display: block;
+  }
+  .btn {
+    border: 1px solid transparent;
+    border-radius: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      filter 0.16s,
+      border-color 0.16s,
+      color 0.16s;
+    display: inline-flex;
+  }
+  .btn-primary {
+    background: var(--color-cyan);
+    color: var(--color-ink);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.06);
+  }
+  .btn-ghost {
+    color: var(--color-fg);
+    border-color: var(--color-line-strong);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+  }
+  .callout {
+    border: 1px solid var(--color-line);
+    border-inline-start-width: 3px;
+    border-inline-start-color: var(--color-cyan);
+    background: var(--color-bg-elevated);
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+  }
+  .field {
+    flex-direction: column;
+    gap: 0.4rem;
+    display: flex;
+  }
+  .field span {
+    font-weight: 700;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    border: 1px solid var(--color-line-strong);
+    background: var(--color-bg);
+    min-height: 2.75rem;
+    color: var(--color-fg);
+    font: inherit;
+    border-radius: 0.75rem;
+    padding: 0.7rem 0.85rem;
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+  .skip-link {
+    z-index: 60;
+    background: var(--color-cyan);
+    color: var(--color-ink);
+    top: -5rem;
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    font-weight: 800;
+    position: absolute;
+    inset-inline-start: 1rem;
+  }
+  .skip-link:focus {
+    top: 0.75rem;
+  }
+  .nav-link {
+    color: var(--color-muted);
+    align-items: center;
+    min-height: 2.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+  }
+  .nav-link:hover,
+  .nav-link[data-active="true"] {
+    color: var(--color-cyan);
+  }
+  .icon-badge {
+    background: var(--color-bg);
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--color-cyan);
+    border: 1px solid var(--color-line);
+    border-radius: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+}

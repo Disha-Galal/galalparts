@@ -1,2 +1,14 @@
-.DS_Store
+node_modules/
+.output/
+.vercel/
+dist/
+.nitro/
+.env
+.env.*
+.grok/
+screenshots/
+artifacts/
+attachments/
 *.log
+.DS_Store
+.node_modules.lock
