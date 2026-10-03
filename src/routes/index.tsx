@@ -1,8 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArticleCard, ContactActions, JsonLd } from "@/components/blocks";
 import { FlameIcon, FridgeIcon, StoveIcon, WasherIcon } from "@/components/icons";
+import { RealWork } from "@/components/real-work";
 import { Shell } from "@/components/shell";
-import { articles, pageMeta, parts, reasons, services, site, siteOrigin, steps, type Service } from "@/lib/site";
+import {
+  articles,
+  pageMeta,
+  parts,
+  reasons,
+  services,
+  site,
+  siteOrigin,
+  steps,
+  type Service,
+} from "@/lib/site";
 
 const icons: Record<Service["id"], typeof WasherIcon> = {
   washers: WasherIcon,
@@ -31,6 +42,8 @@ function serviceSchema() {
     url: origin,
     image: `${origin}/brand/logo-mark.webp`,
     areaServed: site.serviceAreas.map((name) => ({ "@type": "AdministrativeArea", name })),
+    sameAs: [site.FACEBOOK_URL, site.YOUTUBE_URL].filter(Boolean),
+    telephone: site.BUSINESS_WHATSAPP,
     founder: { "@type": "Person", name: site.ownerName },
     knowsLanguage: "ar",
     makesOffer: [
@@ -75,10 +88,28 @@ function Home() {
           <span className="cyan-rule mt-4" />
           <p className="max-w-xl text-lg text-fg">{site.tagline}</p>
           <p className="mt-3 max-w-2xl text-muted">
-            صيانة وقطع غيار في القاهرة والقليوبية وشبرا الخيمة. شحن القطع خارج القاهرة يتم بعد مطابقة الموديل فقط.
+            صيانة وقطع غيار في القاهرة والقليوبية وشبرا الخيمة. شحن القطع خارج القاهرة يتم بعد
+            مطابقة الموديل فقط.
           </p>
-          <div className="mt-6">
-            <ContactActions align="center" />
+          <div className="mt-7 grid w-full max-w-2xl gap-3 sm:grid-cols-2">
+            <Link
+              to="/maintenance"
+              className="card card-link items-center border-cyan py-6"
+              data-event="maintenance_cta_click"
+              data-item="home"
+            >
+              <span className="text-2xl font-bold text-cyan">أريد صيانة جهاز</span>
+              <span className="text-sm text-muted">اختار الجهاز وجهّز طلب الزيارة</span>
+            </Link>
+            <Link
+              to="/parts"
+              className="card card-link items-center py-6"
+              data-event="spare_part_cta_click"
+              data-item="home"
+            >
+              <span className="text-2xl font-bold text-cyan">أريد قطعة غيار</span>
+              <span className="text-sm text-muted">اختار القطعة ونأكد توافقها مع الموديل</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -97,8 +128,10 @@ function Home() {
               return (
                 <Link
                   key={service.id}
-                  to="/maintenance"
-                  hash={service.id}
+                  to="/maintenance/$service"
+                  params={{ service: service.id }}
+                  data-event="maintenance_cta_click"
+                  data-item={service.id}
                   className="card card-link"
                 >
                   <span className="icon-badge">
@@ -119,7 +152,9 @@ function Home() {
             <h2 id="parts-title" className="text-2xl font-bold">
               قطع الغيار
             </h2>
-            <p className="mt-3 text-muted">فئات للتعريف، من غير أسعار أو أكواد على الموقع.</p>
+            <p className="mt-3 text-muted">
+              اختر نوع الجهاز والقطعة، ثم أرسل بيانات الموديل لتأكيد التوافق والتوفر قبل الشراء.
+            </p>
             <Link to="/parts" className="btn btn-primary mt-5">
               تصفح الفئات
             </Link>
@@ -168,6 +203,7 @@ function Home() {
         </div>
       </section>
 
+      <RealWork />
       <section className="section border-t border-line" aria-labelledby="articles-title">
         <div className="wrap">
           <div className="flex flex-wrap items-end justify-between gap-3">
@@ -210,7 +246,8 @@ function Home() {
           <div className="card md:p-8">
             <h2 className="text-2xl font-bold">راسلنا الآن</h2>
             <p className="mt-2 max-w-2xl text-muted">
-              ابعت نوع الجهاز وصورة الموديل ووصف العطل. نرد عليك بالمسار المناسب: فحص، أو قطعة بعد التأكد من التوافق.
+              ابعت نوع الجهاز وصورة الموديل ووصف العطل. نرد عليك بالمسار المناسب: فحص، أو قطعة بعد
+              التأكد من التوافق.
             </p>
             <div className="mt-5">
               <ContactActions />

@@ -21,6 +21,8 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArticlesIndexRouteImport } from './routes/articles/index'
 import { Route as ArticlesSlugRouteImport } from './routes/articles/$slug'
+import { Route as MaintenanceServiceRouteImport } from './routes/maintenance_.$service'
+import { Route as PartsSlugRouteImport } from './routes/parts_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -82,6 +84,16 @@ const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
   path: '/articles/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MaintenanceServiceRoute = MaintenanceServiceRouteImport.update({
+  id: '/maintenance_/$service',
+  path: '/maintenance/$service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartsSlugRoute = PartsSlugRouteImport.update({
+  id: '/parts_/$slug',
+  path: '/parts/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -95,6 +107,8 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/maintenance/$service': typeof MaintenanceServiceRoute
+  '/parts/$slug': typeof PartsSlugRoute
   '/articles/': typeof ArticlesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -109,6 +123,8 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/maintenance/$service': typeof MaintenanceServiceRoute
+  '/parts/$slug': typeof PartsSlugRoute
   '/articles': typeof ArticlesIndexRoute
 }
 export interface FileRoutesById {
@@ -124,6 +140,8 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/maintenance_/$service': typeof MaintenanceServiceRoute
+  '/parts_/$slug': typeof PartsSlugRoute
   '/articles/': typeof ArticlesIndexRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +158,8 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/articles/$slug'
+    | '/maintenance/$service'
+    | '/parts/$slug'
     | '/articles/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -154,6 +174,8 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/articles/$slug'
+    | '/maintenance/$service'
+    | '/parts/$slug'
     | '/articles'
   id:
     | '__root__'
@@ -168,6 +190,8 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/articles/$slug'
+    | '/maintenance_/$service'
+    | '/parts_/$slug'
     | '/articles/'
   fileRoutesById: FileRoutesById
 }
@@ -183,6 +207,8 @@ export interface RootRouteChildren {
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ArticlesSlugRoute: typeof ArticlesSlugRoute
+  MaintenanceServiceRoute: typeof MaintenanceServiceRoute
+  PartsSlugRoute: typeof PartsSlugRoute
   ArticlesIndexRoute: typeof ArticlesIndexRoute
 }
 
@@ -272,6 +298,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArticlesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/maintenance_/$service': {
+      id: '/maintenance_/$service'
+      path: '/maintenance/$service'
+      fullPath: '/maintenance/$service'
+      preLoaderRoute: typeof MaintenanceServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parts_/$slug': {
+      id: '/parts_/$slug'
+      path: '/parts/$slug'
+      fullPath: '/parts/$slug'
+      preLoaderRoute: typeof PartsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -287,6 +327,8 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ArticlesSlugRoute: ArticlesSlugRoute,
+  MaintenanceServiceRoute: MaintenanceServiceRoute,
+  PartsSlugRoute: PartsSlugRoute,
   ArticlesIndexRoute: ArticlesIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -1,3 +1,4 @@
+import { products } from "./products";
 import articlesJson from "../../content/articles.json";
 import catalogJson from "../../content/catalog.json";
 import siteJson from "../../content/site.json";
@@ -163,7 +164,7 @@ export function whatsappMessageLink(message: string): string | null {
 
 export function siteOrigin(): string {
   const configured = site.SITE_URL.trim().replace(/\/$/, "");
-  return configured || "https://galalparts.grok.me";
+  return configured || "https://galalparts.netlify.app";
 }
 
 export function canonicalUrl(path: string): string {
@@ -199,6 +200,8 @@ export function publicPaths(): string[] {
     "/contact",
     "/privacy",
     ...articles.map((article) => `/articles/${article.slug}`),
+    ...services.map((service) => `/maintenance/${service.id}`),
+    ...products.map((product) => `/parts/${product.slug}`),
   ];
 }
 
@@ -207,7 +210,30 @@ export function pageMeta(title: string, description: string, path: string) {
     meta: [
       { title },
       { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:url", content: canonicalUrl(path) },
+      { property: "og:type", content: path.startsWith("/articles/") ? "article" : "website" },
+      { property: "og:site_name", content: site.brandName },
+      { property: "og:locale", content: "ar_EG" },
+      { property: "og:image", content: canonicalUrl("/og.jpg") },
+      { property: "og:image:alt", content: site.brandName },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: canonicalUrl("/og.jpg") },
     ],
     links: [{ rel: "canonical", href: canonicalUrl(path) }],
+  };
+}
+
+export function phoneUrl(): string | null {
+  const base = whatsappBase();
+  return base ? `tel:+${base.split("/").pop()}` : null;
+}
+
+export function missingPageMeta() {
+  return {
+    meta: [{ title: "الصفحة غير موجودة | جلال" }, { name: "robots", content: "noindex, follow" }],
   };
 }

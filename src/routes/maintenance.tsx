@@ -27,6 +27,15 @@ function MaintenancePage() {
             <section key={service.id} id={service.id} className="scroll-mt-24">
               <h2 className="text-2xl font-bold">{service.title}</h2>
               <p className="mt-2 text-muted">{service.summary}</p>
+              <Link
+                to="/maintenance/$service"
+                params={{ service: service.id }}
+                data-event="maintenance_cta_click"
+                data-item={service.id}
+                className="btn btn-primary mt-4"
+              >
+                اطلب صيانة {service.title}
+              </Link>
               <ul className="mt-4 grid gap-3 md:grid-cols-2">
                 {service.faults.map((fault) => (
                   <li key={fault} className="card text-sm">
@@ -38,8 +47,15 @@ function MaintenancePage() {
             </section>
           ))}
           <p className="text-sm text-muted">
-            لإرشادات أولية أطول، راجع <Link to="/guides" className="text-cyan">الأعطال والنصائح</Link> أو{" "}
-            <Link to="/articles" className="text-cyan">المقالات</Link>.
+            لإرشادات أولية أطول، راجع{" "}
+            <Link to="/guides" className="text-cyan">
+              الأعطال والنصائح
+            </Link>{" "}
+            أو{" "}
+            <Link to="/articles" className="text-cyan">
+              المقالات
+            </Link>
+            .
           </p>
         </div>
       </div>

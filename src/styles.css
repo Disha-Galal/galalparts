@@ -26,6 +26,19 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 4px;
+  }
+  img {
+    max-width: 100%;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    overflow-wrap: anywhere;
+  }
   ::selection {
     background: var(--color-cyan);
     color: var(--color-ink);

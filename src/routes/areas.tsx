@@ -19,7 +19,7 @@ function AreasPage() {
       <PageHeader
         eyebrow="النطاق"
         title="مناطق الخدمة والشحن"
-        lede="نعرض نطاق العمل فقط. لا يُنشر عنوان سكن، ولا نقطة على الخريطة."
+        lede="الصيانة في القاهرة والقليوبية وشبرا الخيمة. أكد منطقتك معنا لتحديد إمكانية الزيارة والموعد."
       />
       <div className="section">
         <div className="wrap space-y-4">
@@ -34,7 +34,8 @@ function AreasPage() {
           <article className="callout">
             <h2 className="text-lg font-bold">خارج القاهرة</h2>
             <p className="mt-2 text-sm text-muted">
-              {site.shippingNote}. الشحن خاص بقطع الغيار بعد صورة الملصق، وليس بزيارة صيانة خارج النطاق المذكور.
+              {site.shippingNote}. الشحن خاص بقطع الغيار بعد صورة الملصق، وليس بزيارة صيانة خارج
+              النطاق المذكور.
             </p>
           </article>
         </div>

@@ -1,11 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArticleCard } from "@/components/blocks";
+import { ArticleCard, JsonLd } from "@/components/blocks";
 import { Shell } from "@/components/shell";
 import {
   ARTICLE_DISCLAIMER,
   canonicalUrl,
   findArticle,
   pageMeta,
+  missingPageMeta,
   relatedArticles,
   site,
 } from "@/lib/site";
@@ -17,11 +18,13 @@ export const Route = createFileRoute("/articles/$slug")({
     return { article };
   },
   head: ({ loaderData }) =>
-    pageMeta(
-      loaderData ? `${loaderData.article.title} | جلال` : "مقال | جلال",
-      loaderData?.article.description ?? site.description,
-      loaderData ? `/articles/${loaderData.article.slug}` : "/articles",
-    ),
+    loaderData
+      ? pageMeta(
+          loaderData ? `${loaderData.article.title} | جلال` : "مقال | جلال",
+          loaderData?.article.description ?? site.description,
+          loaderData ? `/articles/${loaderData.article.slug}` : "/articles",
+        )
+      : missingPageMeta(),
   notFoundComponent: ArticleMissing,
   component: ArticlePage,
 });
@@ -56,7 +59,7 @@ function ArticlePage() {
   };
   return (
     <Shell>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <JsonLd data={articleLd} />
       <article className="section">
         <div className="wrap max-w-3xl">
           <p className="text-sm font-semibold text-cyan">{article.categoryLabel}</p>

@@ -19,7 +19,7 @@ function ArticlesPage() {
       <PageHeader
         eyebrow="المقالات"
         title="إرشادات قصيرة"
-        lede="مسودات عملية للعميل. كل مقال يشرح ما يمكن فهمه بأمان، ويحيل التشخيص النهائي إلى مراجعة الموديل."
+        lede="إرشادات عملية للعميل. كل مقال يشرح ما يمكن فهمه بأمان، ويحيل التشخيص النهائي إلى مراجعة الموديل."
       />
       <div className="section">
         <div className="wrap grid gap-3 md:grid-cols-2">

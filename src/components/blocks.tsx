@@ -1,10 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import {
-  facebookUrl,
-  site,
-  whatsappBase,
-  type Article,
-} from "@/lib/site";
+import { facebookUrl, site, whatsappBase, type Article } from "@/lib/site";
 
 export function PageHeader({
   eyebrow,
@@ -29,20 +24,14 @@ export function PageHeader({
 export function ModelCallout() {
   return (
     <aside className="callout">
-      <p>
-        {site.modelRule}. لا نعرض أسعارًا أو أكوادًا ثابتة قبل هذه الصورة.
-      </p>
+      <p>{site.modelRule}. تأكيد الموديل يسبق الشراء، حتى لو كان شكل القطعة مشابهًا.</p>
     </aside>
   );
 }
 
 export function ArticleCard({ article }: { article: Article }) {
   return (
-    <Link
-      to="/articles/$slug"
-      params={{ slug: article.slug }}
-      className="card card-link"
-    >
+    <Link to="/articles/$slug" params={{ slug: article.slug }} className="card card-link">
       <span className="text-xs font-semibold text-cyan">{article.categoryLabel}</span>
       <span className="text-lg font-bold">{article.title}</span>
       <span className="text-sm text-muted">{article.summary}</span>
@@ -81,6 +70,9 @@ export function ContactActions({ align = "start" }: { align?: "start" | "center"
 
 export function JsonLd({ data }: { data: unknown }) {
   return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+    />
   );
 }

@@ -1,14 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import {
-  NAV,
-  emailUrl,
-  facebookUrl,
-  site,
-  whatsappBase,
-  youtubeUrl,
-} from "@/lib/site";
+import { NAV, phoneUrl, emailUrl, facebookUrl, site, whatsappBase, youtubeUrl } from "@/lib/site";
 
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
@@ -55,7 +48,9 @@ export function Shell({ children }: { children: ReactNode }) {
   const youtube = youtubeUrl();
   const email = emailUrl();
   const whatsapp = whatsappBase();
+  const phone = phoneUrl();
   const channels = [
+    phone ? { href: phone, label: "اتصل هاتفيًا", external: false } : null,
     facebook ? { href: facebook, label: "راسلنا على فيسبوك", external: true } : null,
     whatsapp ? { href: whatsapp, label: "واتساب الأعمال", external: true } : null,
     youtube ? { href: youtube, label: "يوتيوب", external: true } : null,
