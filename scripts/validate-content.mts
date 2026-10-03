@@ -56,8 +56,8 @@ for (const photo of credibility.workPhotos)
   if (!existsSync(new URL(`../public${photo.src}`, import.meta.url)))
     throw new Error(`Missing work photo: ${photo.src}`);
 const site = read("site.json");
-if (site.SITE_URL !== "https://galalparts.netlify.app/")
-  throw new Error("Canonical production URL must remain https://galalparts.netlify.app/");
+if (site.SITE_URL !== "https://galalparts.grok.me/")
+  throw new Error("Canonical production URL must remain https://galalparts.grok.me/");
 if (!existsSync(new URL("../public/google7b77a1134d8b36f5.html", import.meta.url)))
   throw new Error("Google verification file is missing");
 console.log(

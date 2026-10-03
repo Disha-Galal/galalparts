@@ -90,8 +90,8 @@ test("only a divergence warns the smoke verdict", () => {
   }
 });
 
-test("the build side resolves explicit overrides in an exported workspace", () => {
-  assert.equal(buildAuthEnabled(projectRoot(), { VITE_AUTH_ENABLED: "false" }), false);
+test("the build side resolves the template's shipped app-env", () => {
+  assert.equal(buildAuthEnabled(projectRoot(), {}), false);
   assert.equal(buildAuthEnabled(projectRoot(), { VITE_AUTH_ENABLED: "true" }), true);
 });
 

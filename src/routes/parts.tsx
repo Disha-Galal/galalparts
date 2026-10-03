@@ -58,7 +58,7 @@ function PartsPage() {
         <div className="wrap space-y-6">
           <ModelCallout />
           <div
-            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4"
             role="search"
             aria-label="البحث عن قطع الغيار"
           >

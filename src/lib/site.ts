@@ -164,7 +164,7 @@ export function whatsappMessageLink(message: string): string | null {
 
 export function siteOrigin(): string {
   const configured = site.SITE_URL.trim().replace(/\/$/, "");
-  return configured || "https://galalparts.netlify.app";
+  return configured || "https://galalparts.grok.me";
 }
 
 export function canonicalUrl(path: string): string {

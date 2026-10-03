@@ -113,7 +113,7 @@ try {
       ),
       `sitemap ${path}`,
     );
-  assert.ok(!sitemap.includes("grok.me"));
+  assert.ok(!sitemap.includes("netlify.app"), "sitemap must not point at Netlify");
   assert.ok(
     (await (await fetch(base + "/robots.txt")).text()).includes(`${site.SITE_URL}sitemap.xml`),
   );
@@ -123,7 +123,8 @@ try {
   );
   const manifestR = await fetch(base + "/__grok/manifest.webmanifest");
   assert.equal(manifestR.status, 200);
-  assert.equal((await manifestR.json()).lang, "ar");
+  const home = await (await fetch(base + "/")).text();
+  assert.match(home, /<html[^>]*lang="ar"[^>]*dir="rtl"/);
   if (process.env.GALAL_HTTP_ONLY === "1") {
     console.log(JSON.stringify(report, null, 2));
   } else {
@@ -158,7 +159,7 @@ try {
         report.consoleErrors.push(`${req.url()}: ${req.failure()?.errorText}`);
     });
     mkdirSync("artifacts", { recursive: true });
-    for (const width of [360, 390, 768, 1440]) {
+    for (const width of [360, 390, 412, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
       for (const path of paths) {
         await page.goto(base + path, { waitUntil: "networkidle" });

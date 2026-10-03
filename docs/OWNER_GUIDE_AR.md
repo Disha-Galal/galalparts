@@ -1,6 +1,6 @@
 # إدارة موقع جلال
 
-الموقع الحالي: https://galalparts.netlify.app/
+الموقع الحالي: https://galalparts.grok.me/
 التعديلات على فرع `netlify-deploy`. فرع `main` هو النسخة السابقة ولا نعدله.
 
 ## إضافة قطعة حقيقية
