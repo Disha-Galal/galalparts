@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="جلال">
+  <rect width="32" height="32" rx="7" fill="#0E1114"/>
+  <path d="M16 2.8 26.6 8.9v14.2L16 29.2 5.4 23.1V8.9Z" fill="#12171C" stroke="#2CC8F0" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M8.2 15.4c1.8-2.8 4.4-4.2 7.8-4.2s6 1.4 7.8 4.2c-1.8 2.8-4.4 4.2-7.8 4.2s-6-1.4-7.8-4.2Z" fill="#0E1114" stroke="#2CC8F0" stroke-width="1.6"/>
+  <circle cx="16" cy="15.4" r="2.35" fill="#2CC8F0"/>
+  <circle cx="16" cy="15.4" r="1.15" fill="#0E1114"/>
+  <circle cx="22.9" cy="22.4" r="4.35" fill="#0E1114" stroke="#2CC8F0" stroke-width="1.9"/>
+  <path d="M25.8 25.4 28.6 28.3" fill="none" stroke="#2CC8F0" stroke-width="1.9" stroke-linecap="round"/>
+</svg>
